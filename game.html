@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Racer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏎️</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .racing-font {
+            font-family: 'Racing Sans One', cursive;
+        }
+        .body-font {
+            font-family: 'Roboto', sans-serif;
+        }
+        #gameCanvas {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white body-font">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="/" class="racing-font text-3xl text-yellow-500">RACER</a>
+                <div class="space-x-6">
+                    <a href="/" class="hover:text-yellow-500 transition">Home</a>
+                    <a href="/game.html" class="hover:text-yellow-500 transition">Play Game</a>
+                    <a href="/about.html" class="hover:text-yellow-500 transition">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="relative w-[900px] h-[600px]">
+            <!-- Game Canvas -->
+            <canvas id="gameCanvas" class="bg-black w-[900px] h-[600px]" width="900" height="600"></canvas>
+
+            <!-- Loading Screen -->
+            <div id="loadingScreen" class="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                <div class="text-center">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <p class="text-xl">Loading Game...</p>
+                </div>
+            </div>
+
+            <!-- Error Screen -->
+            <div id="errorScreen" class="absolute inset-0 bg-gray-900 hidden items-center justify-center">
+                <div class="text-center px-4">
+                    <div class="text-red-500 text-4xl mb-4">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <p class="text-xl mb-4">Oops! Something went wrong.</p>
+                    <p id="errorMessage" class="text-gray-400 mb-4">Unable to load the game.</p>
+                    <button onclick="location.reload()" class="bg-yellow-500 text-gray-900 px-6 py-2 rounded-full hover:bg-yellow-400">
+                        Try Again
+                    </button>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="absolute top-4 right-4 flex space-x-2">
+                <button id="pauseBtn" class="bg-gray-800/80 p-2 rounded-full hover:bg-gray-700 transition">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <button id="muteBtn" class="bg-gray-800/80 p-2 rounded-full hover:bg-gray-700 transition">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/graphics.js"></script>
+    <script src="js/sound.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/road.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/opponents.js"></script>
+    <script src="js/track.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/engine.js"></script>
+</body>
+</html>
